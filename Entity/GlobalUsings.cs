@@ -1,0 +1,9 @@
+﻿//global using ConnectionProvider.Context;
+//global using Domain.Entities.Archivievum;
+//global using Domain.TransferObjects;
+//global using api.dogovor.alif.tj.LogSettings;
+//global using ConvertApiDotNet;
+global using Domain.ReturnMessage;
+global using Domain.TransferObjects;
+global using Domain.User;
+//global using Repository.ArchievumRepositories;

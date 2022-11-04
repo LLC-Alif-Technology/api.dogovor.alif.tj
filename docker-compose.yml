@@ -1,0 +1,13 @@
+version: "3"
+services:
+  apidogovor:
+    build: .
+    ports:
+      - "7254:7254"
+      - "5254:5254"
+    container_name: "api.dogovor.alif.tj.api"
+    networks:
+      - dogovor-network
+networks:
+  dogovor-network:
+    driver: bridge
