@@ -14,71 +14,71 @@ namespace Repository
 
         public async Task<List<Agent>> GetAgent()
         {
-            return await _context.Agents.ToListAsync();
+            return  _context.Agents.ToList();
         }
 
         public async Task<List<AgreementConcluder>> GetAgreementConcluder()
         {
-            return await _context.AgreementConcluders.ToListAsync();
+            return  _context.AgreementConcluders.ToList();
         }
 
         public async Task<List<Citizenship>> GetCitizenship()
         {
-           return await _context.Citizenships.ToListAsync();
+           return  _context.Citizenships.ToList();
         }
 
         public async Task<List<City>> GetCityList()
         {
-            return await _context.City.ToListAsync();
+            return _context.City.ToList();
         }
 
         public async Task<List<PassportType>> GetPassportType()
         {
-            return await _context.PassportTypes.ToListAsync();
+            return _context.PassportTypes.ToList();
         }
 
         public async Task<List<PartialPaymentOrder>> GetPartialPaymentOrder()
         {
-            return await _context.PartialPaymentOrderNames.ToListAsync();
+            return  _context.PartialPaymentOrderNames.ToList();
         }
 
         public async Task<PaymentOrderDTO> GetPaymentOrder()
         {
             return new PaymentOrderDTO
             {
-                 PaymentOrder = await _context.PaymentOrders.ToListAsync(),
-                 PaymentTerm = await _context.PaymentTerms.ToListAsync()
+                 PaymentOrder =  _context.PaymentOrders.ToList(),
+                 PaymentTerm =  _context.PaymentTerms.ToList()
             };
         }
 
         public async Task<List<RendedServicesVariations>> GetRendedServicesVariations()
         {
-            return await _context.RendedServicesVariations.ToListAsync();
+            return  _context.RendedServicesVariations.ToList();
         }
 
         public async Task<List<Services>> GetService()
         {
-            return await _context.Services.ToListAsync();
+            return  _context.Services.ToList();
         }
 
         public async Task<List<StructuralSubdivision>> GetStructuralSubdivision()
         {
-            return await _context.StructuralSubdivisions.ToListAsync();
+            return  _context.StructuralSubdivisions.ToList();
         }
 
         public async Task<List<TrustieFoundation>> GetTrustieFoundation()
         {
-            return await _context.TrustieFoundations.ToListAsync();
+            return  _context.TrustieFoundations.ToList();
         }
 
         public async Task<List<ActVariationsOfCompletion>> GetActVariationsOfCompletions()
         {
-            return await _context.ActVariationsOfCompletions.ToListAsync();
+            return  _context.ActVariationsOfCompletions.ToList();
         }
 
         public async Task<List<AgreementEntity>> GetAgreementEntities()
         {
-            return await _context.AgreementEntities.ToListAsync();
+            return  _context.AgreementEntities.ToList();
         }
     }
 }

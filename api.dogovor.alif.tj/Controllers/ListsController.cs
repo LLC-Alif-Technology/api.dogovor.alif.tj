@@ -42,7 +42,7 @@
         [HttpGet("CitiesList")]
         public async Task<IActionResult> CitiesList()
         {
-            return Ok(await _list.GetCityList());
+            return Ok( _list.GetCityList());
         }
 
         /// <summary>
