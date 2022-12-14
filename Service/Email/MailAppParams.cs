@@ -1,6 +1,6 @@
 ﻿namespace Repository.Email
 {
-    public class MailSettings
+    public class MailAppParams
     {
         public string Mail { get; set; }
         public string DisplayName { get; set; }

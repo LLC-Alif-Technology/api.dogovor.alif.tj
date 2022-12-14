@@ -1,4 +1,6 @@
-﻿namespace api.dogovor.alif.tj.Controllers
+﻿using Domain.Enum;
+
+namespace api.dogovor.alif.tj.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -51,7 +53,7 @@
             if(!Directory.Exists(path))
                 Directory.CreateDirectory(path);
             dto.FilePath = path;
-            var mail = await _mail.SendEmailAsync(dto, Domain.Method.SendFile);
+            var mail = await _mail.SendEmailAsync(dto, ExecutionWay.SendFile);
             return mail.StatusCode == HttpStatusCode.BadRequest ? BadRequest(mail) : Ok(mail); 
         }
     }   

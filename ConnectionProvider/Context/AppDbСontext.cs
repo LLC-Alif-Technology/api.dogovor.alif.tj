@@ -3,6 +3,8 @@ using Domain.Entities;
 using Domain.Entities.Archivievum;
 using Domain.User;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
+using System.Data;
 //using System.Data.Entity;
 
 namespace ConnectionProvider.Context
@@ -11,7 +13,10 @@ namespace ConnectionProvider.Context
     {
         public AppDbСontext(DbContextOptions options) : base(options)
         {
+           
         }
+
+       
 
         public DbSet<User> Users { get; set; }
         public DbSet<Role> Roles { get; set; }

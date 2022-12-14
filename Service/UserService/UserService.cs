@@ -1,14 +1,18 @@
-﻿namespace Service.UserService
+﻿using Service.JWTSettings;
+
+namespace Service.UserService
 {
     public class UserService : IUserService
     {
         private readonly IUserRepository _uRepository;
+        private readonly JsonTokenGenerator _token;
         private readonly IMailService _mailService;
 
-        public UserService(IUserRepository uRepository, IMailService mailService)
+        public UserService(IUserRepository uRepository, IMailService mailService, JsonTokenGenerator token)
         {
             _uRepository = uRepository;
             _mailService = mailService;
+            _token = token;
         }
         public async Task<Response> RegisterUser(RegisterDTO dto)
         {
@@ -16,7 +20,7 @@
             {
                 var user = await _uRepository.GetUserbyEmail(dto.EmailAddress.ToUpper());
                 if(user != null)
-                    return new Response { StatusCode = System.Net.HttpStatusCode.Conflict, Message = "This accaunt already exists!" };
+                    return new Response { StatusCode = System.Net.HttpStatusCode.BadRequest, Message = "This accaunt already exists!" };
                 if (dto.Password != dto.RepeatPassword)
                 {
                     LogProvider.GetInstance().Warning("400", "User not found!");
@@ -117,7 +121,7 @@
                     LogProvider.GetInstance().Warning("400, Invalid credentials");
                     return new Response { StatusCode = System.Net.HttpStatusCode.BadRequest, Message = "Invalid credentials" };
                 }
-                var tokenJWT = await _uRepository.JSONToken(user);
+                var tokenJWT = await _token.JSONToken(user);
                 return new Response { StatusCode = System.Net.HttpStatusCode.OK, Message = tokenJWT.ToString() };
             }
             catch (Exception ex)

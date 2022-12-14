@@ -1,4 +1,4 @@
-﻿using Domain;
+﻿using Domain.Enum;
 using Microsoft.AspNetCore.Http;
 
 namespace Repository.Email
@@ -6,6 +6,6 @@ namespace Repository.Email
     public interface IMailService
     {
         //public Task<Response> SendEmailAsync(MailParameters dto);
-        public Task<Response> SendEmailAsync(MailParameters dto, Method method = default);
+        public Task<Response> SendEmailAsync(MailParameters dto, ExecutionWay method = default);
     }
 }

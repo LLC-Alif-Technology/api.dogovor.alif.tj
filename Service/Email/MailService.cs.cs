@@ -1,4 +1,4 @@
-﻿using Domain;
+﻿using Domain.Enum;
 using MailKit.Security;
 using Microsoft.AspNetCore.Http;
 using Service;
@@ -8,16 +8,14 @@ namespace Repository.Email
 {
     public class MailService : IMailService
     {
-        private readonly MailSettings _settings;
-        private readonly IArchiveService _archiveService;
+        private readonly MailAppParams _settings;
 
-        public MailService(IOptions<MailSettings> options, IArchiveService archiveService)
+        public MailService(IOptions<MailAppParams> options)
         {
             _settings = options.Value;
-            _archiveService = archiveService;
         }
 
-        public async Task<Response> SendEmailAsync(MailParameters dto, Method method)
+        public async Task<Response> SendEmailAsync(MailParameters dto, ExecutionWay method)
         {
             try
             {   
@@ -26,7 +24,7 @@ namespace Repository.Email
                 email.To.Add(MailboxAddress.Parse(dto.toEmail));
                 var builder = new BodyBuilder();
 
-                if (method.Equals(Method.SendFile))
+                if (method.Equals(ExecutionWay.SendFile))
                 {
                     var finalPath = Path.Combine(dto.FilePath, dto.file.FileName);
                     using (Stream fileStream = new FileStream(finalPath, FileMode.Create, FileAccess.Write))

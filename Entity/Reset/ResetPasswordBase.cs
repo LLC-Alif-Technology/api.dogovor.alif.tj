@@ -1,4 +1,6 @@
-﻿namespace Entity.Reset
+﻿using Domain.User;
+
+namespace Entity.Reset
 {
     public class ResetPasswordBase
     {

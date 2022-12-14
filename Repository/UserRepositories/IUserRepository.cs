@@ -6,8 +6,7 @@ namespace Repository
     {
         public Task<EntityEntry<User>> InsertUser(RegisterDTO dto);
         public Task<User> GetUserbyEmail(string email);
-        public Task<Role> GetUserRole(int Id);
-        public Task<string> JSONToken(User user);
+        public Task<Role> GetUserRole(int Id); 
         public Task<UserCode> GetUserCodeCompared(string email);
         public Task<UserCode> InsertUserCode(string randomNumber, int UserId, DateTime date); 
         public Task UpdateCode(UserCode userCode, int NewCode);

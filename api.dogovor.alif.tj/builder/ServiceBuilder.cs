@@ -1,4 +1,6 @@
-﻿namespace api.dogovor.alif.tj.builder
+﻿using Service.JWTSettings;
+
+namespace api.dogovor.alif.tj.builder
 {
     public static class ServiceBuilder
     {
@@ -18,12 +20,12 @@
             Services.AddScoped<IArchiveRepository, ArchiveRepository>();
             Services.AddScoped<IArchiveService, ArchiveService>();
             Services.AddScoped<IMailService, MailService>();
+            Services.AddScoped<JsonTokenGenerator>();
             Services.AddAutoMapper(typeof(MapperProfile));
-            Services.Configure<MailSettings>(builder.Configuration.GetSection("MailSettings"));
+            Services.Configure<MailAppParams>(builder.Configuration.GetSection("MailSettings"));
             return Services;
         }
-         //public static void ConfigureAutomapper(this IServiceCollection services) =>
-         //    services.AddAutoMapper(typeof(MapperProfile));
+
         public static void AddAuthentication(this IServiceCollection Services, WebApplicationBuilder builder)
         {
             Services.AddAuthentication(opt =>

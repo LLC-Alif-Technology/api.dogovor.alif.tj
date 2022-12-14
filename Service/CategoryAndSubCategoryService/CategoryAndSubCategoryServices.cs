@@ -169,6 +169,7 @@ namespace Service.ContractServices
                     }
                 
                 var guid = Guid.NewGuid();
+
                 var fileName = Path.Combine(path, $"{contractName} {guid}.txt");
                 if (File.Exists(fileName))
                     File.Delete(fileName);
@@ -180,6 +181,7 @@ namespace Service.ContractServices
                     writer.WriteLine(rtfText);
 
                 File.Move(fileName, Path.ChangeExtension(fileName, ".rtf"));
+
                 LogProvider.GetInstance().Info(System.Net.HttpStatusCode.OK.ToString(), "Successfull process!");
                 return new Response { StatusCode = System.Net.HttpStatusCode.OK, Message = fileName.Replace("txt","rtf"), GuidId = guid.ToString()};
             }
