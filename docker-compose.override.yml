@@ -2,6 +2,7 @@ version: '3.4'
 
 services:
   api.dogovor.alif.tj:
+    build: .
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=https://+:443;http://+:80
