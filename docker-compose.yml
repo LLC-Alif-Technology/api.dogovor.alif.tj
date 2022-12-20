@@ -8,6 +8,7 @@ services:
     container_name: "api.dogovor.alif.tj.api"
     networks:
       - dogovor-network
+
 networks:
   dogovor-network:
-    driver: bridge
+    external: true
