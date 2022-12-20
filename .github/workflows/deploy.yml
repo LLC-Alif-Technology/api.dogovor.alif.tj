@@ -7,7 +7,7 @@ on:
 
 jobs:
   deploy:
-    runs-on: [self-hosted,api_dogovor]
+    runs-on: [self-hosted,apidogovorprod]
     steps:
       - uses: actions/checkout@v3
 
