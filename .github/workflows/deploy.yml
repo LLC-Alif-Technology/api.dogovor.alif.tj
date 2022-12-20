@@ -1,0 +1,19 @@
+name: PROD api-dogovor.alif.tj
+
+on:
+  push:
+    branches:
+      - actions
+
+jobs:
+  deploy:
+    runs-on: [self-hosted, api_dogovor]
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: copy files
+        run: cp -r /home/behruz/runner/_work/api-dogovor-tj/api-dogovor-tj/* /var/api/apidogovorprod/
+        
+      - name: build project
+        run: |
+          cd /var/api/apidogovorprod/ && docker commpose up -d --build
