@@ -16,4 +16,4 @@ jobs:
         
       - name: build project
         run: |
-          cd /var/api/apidogovorprod/ && docker commpose up -d --build
+          cd /var/api/apidogovorprod/ && docker-commpose up -d --build
