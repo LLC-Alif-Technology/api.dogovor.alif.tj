@@ -23,6 +23,7 @@ namespace api.dogovor.alif.tj.builder
             Services.AddScoped<JsonTokenGenerator>();
             Services.AddAutoMapper(typeof(MapperProfile));
             Services.Configure<MailAppParams>(builder.Configuration.GetSection("MailSettings"));
+            Services.AddAuthentication();
             return Services;
         }
 
