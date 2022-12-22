@@ -23,11 +23,11 @@ namespace api.dogovor.alif.tj.builder
             Services.AddScoped<JsonTokenGenerator>();
             Services.AddAutoMapper(typeof(MapperProfile));
             Services.Configure<MailAppParams>(builder.Configuration.GetSection("MailSettings"));
-            Services.AddAuthentication();
+            Services.AddAuthenticationBearer(builder);
             return Services;
         }
 
-        public static void AddAuthentication(this IServiceCollection Services, WebApplicationBuilder builder)
+        public static IServiceCollection AddAuthenticationBearer(this IServiceCollection Services, WebApplicationBuilder builder)
         {
             Services.AddAuthentication(opt =>
             {
@@ -49,6 +49,7 @@ namespace api.dogovor.alif.tj.builder
                         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JWT:Secret"]))
                     };
                 });
+            return Services;
         }
     }
 }
